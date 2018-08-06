@@ -1,14 +1,13 @@
-
-
-
-
+#
+#
+#
+#
 # def fibo(num):
 #     first = 0
 #     second = 1
-#     result = [0]
+#     result = []
 #     for i in range(0,num):
 #         third = first + second
-#         #print(second)
 #         result.append(second)
 #         first = second
 #         second = third
@@ -17,14 +16,22 @@
 # fibo(10)
 
 
-fib = []
-for i in range(0,10):
-    if i == 0:
-        fib.append(0)
-    elif i == 1:
-        fib.append(1)
-    else: (fib.append(fib[i-1]+fib[i-2]));
+def fib(num):
+    fib=[]
+    for i in range(0,num):
+        if i == 0:
+            fib.append(0)
+        elif i == 1:
+            fib.append(1)
+        else:
+            fib.append(fib[i-1]+fib[i-2])
+    return(fib)
+#
+#
+#
 
 
 
-print(fib)
+
+
+fib(10)
