@@ -1,27 +1,29 @@
-## Fill in the following methods for the class 'Clock'
+mystuff=['here', 'we', 'go']
+mystuff
+mystuff.append(['Jan', 'Michael', 'Vincent'])
+mystuff[3]
 
-class Clock(object):
-    def __init__(self, hour, minutes):
-        self.minutes = minutes
-        self.hour = hour
+## Exercise 39
 
-    @classmethod
-    def at(cls, hour, minutes=0):
-        return cls(hour, minutes)
+class Thing(object):
+        def test(hi):
+            print "hi"
+ten_things = "Apples Oranges Crows Telephone Light Sugar" 
+print "Wait there's not 10 things in that list, let's fix that." 
+stuff = ten_things.split(' ') 
+more_stuff = ["Day", "Night", "Song", "Frisbee", "Corn", "Banana", "Girl", "Boy"] 
 
-    ## Print the time
-    def __str__(self):
-    
-    ## Add time
-    ## Don't return anythhing
-    def __add__(self,minutes):
-    
-    ## Subtract time
-    ## Don't return anything
-    def __sub__(self,minutes):
-    
-    ## Are two times equal?
-    def __eq__(self, other):
-    
-    ## Are two times not equal?
-    def __ne__(self, other):
+while len(stuff) != 10:
+    next_one = more_stuff.pop() 
+    print "Adding: ", next_one 
+    stuff.append(next_one)
+    print "There's %d items now." % len(stuff)
+
+print "There we go: ", stuff 
+print "Let's do some things with stuff." 
+
+st
+print stuff[1]
+print stuff[-1] # whoa! fancy print stuff.pop()
+print ' '.join(stuff) # what? cool!
+print '#'.join(stuff[3:5]) # super stellar!
