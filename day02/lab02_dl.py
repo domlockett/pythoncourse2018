@@ -2,7 +2,8 @@
 
 class Clock(object):
     def __init__(self, hour, minutes):
-       # if len(str(minutes))!= 2: print "please add a 2 value number in minutes"
+
+       
         self.minutes = minutes
         self.hour = hour
 
@@ -17,15 +18,19 @@ class Clock(object):
     ## Add time
     ## Don't return anythhing
     def __add__(self,minutes):
-        hour = self.hour + int(minutes/60)
-        minutes = self.minutes + ((minutes%60))
+        if minutes > 1440: print "too many minutes honey"
+        else:
+            hour = self.hour + int(minutes/60)
+            minutes = self.minutes + ((minutes%60))
         return "%d:%02d" % (hour, minutes)
     
     ## Subtract time
     ## Don't return anything
     def __sub__(self,minutes):
-        hour = self.hour - int(minutes/60)
-        minutes = self.minutes - ((minutes%60))
+        if minutes > 1440: print "too many minutes honey"
+        else:
+            hour = self.hour - int(minutes/60)
+            minutes = self.minutes - ((minutes%60))
         return "%d:%02d" % (hour, minutes)
     ## Are two times equal?
     def __eq__(self, other):
