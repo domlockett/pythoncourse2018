@@ -168,7 +168,7 @@ class School():
         self.db = {} #initialize empty dictionary to store kids and grades
         
     def add(self, name, student_grade): #add a kid to a grade in instance of School
-        if student_grade in self.db: #need to check if the key for the grade already exists, otherwise assigning it will return error
+        if student_grade in self.db: se
             self.db[student_grade].append(name) #add kid to the set of kids within the dictionary
         else: self.db[student_grade] = [name] #if the key doesn't exist, create it and have kid start new list 
 
