@@ -72,4 +72,4 @@ for i in string_list:
     try:
         print(reverse(i))
     except TypeError:
-        print "Type Error: the input should be a string"
+        print " the input should be a string"
