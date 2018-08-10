@@ -68,15 +68,8 @@ def piglatin(txt):
 string_list = ["hi", "hello there", 5, "hope this works", 100, "will it?"]
 type(string_list)
 
-
-def reverse(txt):
-    output=[]
+for i in string_list:
     try:
-		output=txt[::-1]
-	except AttributeError:
-		output= "This isnt a string"
-	except TypeError:
-		output="This isnt a string"
-	return output
-
-#can i commit tthis ?
+        print(reverse(i))
+    except TypeError:
+        print "Type Error: the input should be a string"
