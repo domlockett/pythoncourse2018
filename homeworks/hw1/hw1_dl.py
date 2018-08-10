@@ -123,7 +123,7 @@ class Portfolio(object): #initialize cash
     ## history of transactions
     def history(self):
         print "Transaction history:"
-        print  '\n'.join(me.hist)
+        print  '\n'.join(self.hist)
 
 
 

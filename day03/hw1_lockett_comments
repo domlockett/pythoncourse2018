@@ -1,0 +1,26 @@
+Comments
+----------
+- This is a solid attempt at the assignment, but be sure to thoroughly test your program to make sure that all of the functionality is there. I ran into the following problems when trying to run your code:
+--- print portfolio resulted in "NameError: global name 'me' is not defined"
+--- portfolio.history() resulted in "NameError: global name 'me' is not defined"
+--- portfolio.buyMutualFunds(2.00, mf2) resulted in "Transaction error: Share number must be fraction"
+--- portfolio.sellMutualFund(3, 'BRT') resulted in "Transaction error: Share number must be fraction"
+--- (the last two errors are, perhaps, understandable since the mutual fund instructions specified "fractional shares." But running the required code as specified in the instructions would indicate that the mutual funds functions should be able to handle integer and fractional values.)
+
+- Also don't forget the bonus! It'll not only earn you extra credit on the homework, but will improve your understanding of inheritance and polymorphism.
+
+- Though your code is generally efficient, there are a number of places you could minimize operations and/or stay DRY. Efficiency improves the speed of your functions, as well as the readability of your code. I've noted some lines of your code, below, where you might want to take a second look
+--- line 3; now isn't technically now, it's when you first run that line. how will this affect creating a portfolio 20 minutes later?
+--- line 24; are nested dictionaries the most efficient way to store and recover this information?
+--- lines 40, 60, 117; you have 3 "insufficient funds" statements. how can this be generalized?
+--- lines 49, 68; when creating a new dictioanry key and value, mydict['A'] = 1 works
+---  lines 114-126; withdrawCash($) == addCash(-$) ?
+
+
+Grade
+----------
+Functionality: 3/5
+Efficiency: 2/3
+Readability: 1.75/2
+Bonus: 0/1
+Grade: 6.75/10
