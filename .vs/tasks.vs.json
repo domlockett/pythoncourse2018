@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-class04_html_dl",
+      "appliesTo": "day04/class04_html_dl.py",
+      "type": "launch"
+    }
+  ]
+}
