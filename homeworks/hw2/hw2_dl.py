@@ -13,9 +13,12 @@ import os
 import re
 import csv
 topic = []
+date = []
 web_page = []
 web_address = []
 temp = []
+temp1 = []
+sign = []
 site = []
 name = []
 all_topic = []
@@ -27,12 +30,13 @@ with open('hw2_dl.csv', 'wb') as f:
     w.writeheader()
 
 
-## PETITION SITES
-def extr_site():
+
+def get_data():
+    ## PETITION SITES
     for i in range(0,4):
         web_address = 'https://petitions.whitehouse.gov/?page=' + '%s' % i
-        web_page = urllib2.urlopen(web_address)
-        all_html.append(BeautifulSoup(web_page.read()))
+        web_page = urllib2.urlopen(web_address) ## having figured it below I know this can be more
+        all_html.append(BeautifulSoup(web_page.read()))#eloquent will fix if remaining work time <2hrs
 
     for i in all_html:
         try:
@@ -48,18 +52,23 @@ def extr_site():
             except KeyError:
                 site.append('NA')
 
-extr_site()
-site = site[2::2]
-
-
-    
-## PETITION TITLES
-def title():
+    site = site[2::2]
+    ##TITLES
     for i in site:
-        web_page = ( urllib2.urlopen(i))
-        name.append(BeautifulSoup(web_page.read()))
-        for i in site:
-            temp.append(i.find_all('h1'))
-        
-title()
+        name.append(BeautifulSoup(urllib2.urlopen(i).read()).find('h1').get_text().encode('utf-8'))
 
+    ## NUMBER OF SIGNATURES
+    for i in all_html:
+        temp1.append(i.find_all('span', {'class': "signatures-number"}))
+    for j in temp1:
+        for e in j:
+            sign.append(e.get_text().encode('utf-8'))
+
+     ## ISSUES
+        
+
+
+def why()
+
+
+BeautifulSoup(urllib2.urlopen(site[1]).read())
