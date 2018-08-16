@@ -72,7 +72,7 @@ def piglatin(txt):
 ## Write a try/catch to handle this.
  
 string_list = ["hi", "hello there", 5, "hope this works", 100, "will it?"]
-
+r = []
 
 reverse_list = []
 for s in string_list:

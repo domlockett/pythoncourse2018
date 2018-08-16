@@ -12,29 +12,54 @@ import time
 import os
 import re
 import csv
-
+topic = []
+web_page = []
+web_address = []
+temp = []
+site = []
+name = []
+all_topic = []
+all_topics = []
+ext = []
+all_html = []
 with open('hw2_dl.csv', 'wb') as f:
     w = csv.DictWriter(f, fieldnames = ("Title", "Published date", "Issues"))
     w.writeheader()
-    web_address='https://petitions.whitehouse.gov/petitions'
-    web_page = urllib2.urlopen(web_address)
-    all_html = BeautifulSoup(web_page.read())
-    all_html.prettify
-    all_topic = all_html.find_all("h3")[3:]
-    all_topics = [i.text for i in all_topics]
-    topic = []
-    extension=[]
-    for i in all_topics:
-        topic.append(i.encode('utf-8', 'ignore'))
-    dates = all_html.find_all('div', {'h4' : "petition-attribution"})
-   
-    ## collect website extension for the publish date
-    ext = all_html.find_all("a")
+
+
+## PETITION SITES
+def extr_site():
+    for i in range(0,4):
+        web_address = 'https://petitions.whitehouse.gov/?page=' + '%s' % i
+        web_page = urllib2.urlopen(web_address)
+        all_html.append(BeautifulSoup(web_page.read()))
+
+    for i in all_html:
+        try:
+            ext.append(i.find_all("a"))
+        except AttributeError:
+            ext.append("NA")
+
     for i in ext:
-        extension.append(i['href'])
+        for j in i:
+            try:
+                if j['href'][0:10] == '/petition/':
+                    site.append("https://petitions.whitehouse.gov" +( j['href'].encode('utf-8')))
+            except KeyError:
+                site.append('NA')
+
+extr_site()
+site = site[2::2]
 
 
-    for i in all_topic:
-        extension.append = i.attrs["href"]
+    
+## PETITION TITLES
+def title():
+    for i in site:
+        web_page = ( urllib2.urlopen(i))
+        name.append(BeautifulSoup(web_page.read()))
+        for i in site:
+            temp.append(i.find_all('h1'))
+        
+title()
 
-all_topics
