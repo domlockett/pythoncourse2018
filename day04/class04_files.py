@@ -52,7 +52,7 @@ with open('test_writefile.txt', 'a') as f:
 import csv
 
 ## Open a file stream and create a CSV writer object
-with open('test_writecsv.txt', 'wb') as f:
+with open('test_HW2.csv', 'wb') as f:
   my_writer = csv.writer(f)
   for i in range(1, 100):
     my_writer.writerow([i, i-1])
