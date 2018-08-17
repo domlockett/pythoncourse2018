@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\day05"
+    "\\day03",
+    "\\homeworks",
+    "\\homeworks\\hw2"
   ],
-  "SelectedNode": "\\day05\\class05_maps_dl.py",
+  "SelectedNode": "\\homeworks\\hw2\\hw2_dl.py",
   "PreviewInSolutionExplorer": false
 }
