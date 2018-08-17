@@ -71,7 +71,7 @@ class Portfolio(object): #initialize cash
     ## Print the portfolio
     def __str__(self):
         print "cash: %.2f" % self.cash
-        return str(me.port )    
+        return str(self.port )    
 
     ##  Sell mutual fund with number of shares
     def sellMutualFund(self, shares, mf):

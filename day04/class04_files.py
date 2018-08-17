@@ -36,15 +36,14 @@ f.close()
 
 ## Writing files is easy,
 ## open command takes r, w, a, plus some others
-with open('test_writefile.txt', 'w') as f:
+with open('C:/Python27.14/pythoncourse2018/day06/test.txt', 'a') as f:
   ## wipes the file clean and opens it
-  f.write("Hi guys.")
-  f.write("Does this go on the second line?")
-  f.writelines(['a\n', 'b\n', 'c\n'])
+   f.writelines(['there was a theeb that these thots knew\n', 'the cat in the hat knew all about that\n', 'c\n'])
 
-with open('test_writefile.txt', 'a') as f:
+with open('C:/Python27.14/pythoncourse2018/day06/test.txt', 'a') as f:
   ## appends
-  f.write("I got appended!")
+  f.writelines("\nThe\n!")
+  f.write ('these there then theeeb')
 
 
 

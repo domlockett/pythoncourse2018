@@ -5,9 +5,10 @@
 
 #pip install meetup-api
 import imp
-
+import os
+cwd = os.getcwd()
 ## first arg is folder name, second arg is navigating to file
-meetup = imp.load_source('pythoncourse2018-prep', '../../pythoncourse2018-prep/day05/erinkeys/meetupkeys.py')
+meetup = imp.load_source('C:\Python27.14', 'C:\Python27.14\KEYS\meetup_KEY.py')
 api = meetup.client
 
 ## methods we can use
