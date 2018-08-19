@@ -26,8 +26,7 @@ alltext = ' '.join(text)
 ## Regular Expressions --------------------------------------------------------
 ## Help us find patterns in the string.
 
-# re.findall
-# re.split
+# re.fin# re.split
 # re.match
 # re.search
 # re.compile
