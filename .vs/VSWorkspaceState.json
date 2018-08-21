@@ -1,15 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\day01",
-    "\\day02",
     "\\day03",
-    "\\day04",
-    "\\day05",
-    "\\day06",
+    "\\day07",
     "\\homeworks",
+    "\\homeworks\\hw1",
     "\\homeworks\\hw3"
   ],
-  "SelectedNode": "\\day06\\class06_regex_dl.py",
+  "SelectedNode": "\\day03\\class03_dl.py",
   "PreviewInSolutionExplorer": false
 }

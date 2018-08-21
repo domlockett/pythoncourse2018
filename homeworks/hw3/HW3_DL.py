@@ -7,6 +7,8 @@
 import imp
 import os
 import meetup.api
+import operator
+
 #define a space **Do i HAVE to do this outside function
     #in order to have it save into the local environment?
 group_info = {}
@@ -14,6 +16,8 @@ names = []
 size = []
 active = []
 orig = []
+ids = []
+groups = []
 cwd = os.getcwd()
 cwd
 
@@ -28,32 +32,38 @@ len(stlgroups)
 
 #get the most popular group
 #x = []
-def popular(groupList):
+def grab(groupList):
     for group in groupList:
         temp = group.urlname.encode('utf-8') # extract names to string
         temp2 = group.members
         names.append(temp)
         size.append(temp2)
-    
-# trying to make a dictionary   
-def dict():    
-    for i, item in names:
-        try:
-            group_info[item] = [size[i]]
-        except ValueError:
-            print i
-        except TypeError:
-            print i
 
-# create a dictionary attaching the names
- for i in mydict:
-#** I tried to name the 'orig' size order in the loop: see '#x'
-orig = size
-size.sort(reverse = True) # sort the groups by size descending
-    active = names[0] #identify group with  most members
- popular (stlgroups)
-    for i in size:
+#Make a dictionary
+group_info = dict(zip(names, size))
 
-    return names
+# a couple quick tests to make sure dict aligns:
+names[0]
+size[0]
+group_info['Saint-Louis-Singles-Outdoor-Adventure-Group']# check
 
+names[33]
+size[33]
+group_info['Saint-Charles-Hiking-walking-Meetup']#check
 
+#now lets do a quick sort and see whos most popular
+#we use the operator module so we can store the key with the sorted value
+sorted_gi = sorted(group_info.items(), key=operator.itemgetter(1))
+top_group = api.GetMembers({"group_urlname":  sorted_gi[-1][0]})
+ppl = top_group.__dict__["results"]
+len(ppl)
+group_info = dict(zip(names, size))
+members[0]
+
+def peeps(membList):
+    for i in membList:
+        ids.append(i['id'])
+        groups.append(temp2)
+
+x =api.GetGroups({"member_id" : members[0]['id']}).results
+x['name']

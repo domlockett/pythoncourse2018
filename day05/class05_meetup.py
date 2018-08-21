@@ -8,7 +8,11 @@ import imp
 import os
 cwd = os.getcwd()
 ## first arg is folder name, second arg is navigating to file
+<<<<<<< HEAD
 meetup = imp.load_source('C:\Python27.14', 'C:\Python27.14\KEYS\meetup_KEY.py')
+=======
+meetup = imp.load_source('pythoncourse2018', '../../pythoncourse2018-prep/day05/erinkeys/meetupkeys.py')
+>>>>>>> upstream/master
 api = meetup.client
 
 ## methods we can use
