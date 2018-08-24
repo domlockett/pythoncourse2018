@@ -8,17 +8,20 @@ import imp
 import os
 import meetup.api
 import operator
-client.
+import time
 #define a space **Do i HAVE to do this outside function
     #in order to have it save into the local environment?
 group_info = {}
 names = []
 stlgroups = []
 size = []
+ppl = []
 active = []
 orig = []
 ids = []
 groups = []
+pop_groups= []
+actguys_groups = []
 cwd = os.getcwd()
 cwd
 client.RateLimit
@@ -28,48 +31,57 @@ meetup = imp.load_source('C:\Python27.14', 'C:\Python27.14\KEYS\meetup_KEY.py')
 api = meetup.client
 
 ##identify a group based on some search criteria
-for p in range(200):
-    stlgroups.append( api.GetFindGroups({"zip" : "63116"})[p])
-len(stlgroups)
+#for p in range(800):
+#    stlgroups.append( api.GetFindGroups({"zip" : "63116"})[p])
+#len(stlgroups)
+
+stlgroups = api.GetFindGroups({"zip" : "63116"})
 
 ##get the the names and sizes of both groups
 def grab(groupList):
-    for group in groupList:
-        temp = group.urlname.encode('utf-8') # extract names to string
-        temp2 = group.members
-        names.append(temp)
-        size.append(temp2)
+        for group in groupList:
+            temp = group.urlname.encode('utf-8') # extract names to string
+            temp2 = group.members
+            names.append(temp)
+            size.append(temp2)
+       
 
-##Make a dictionary
-group_info = dict(zip(names, size))
+    ##Make a dictionary
+grab(stlgroups)
+grab(actguys_groups)
+def genPop():#Most popular group on a general level from search
+    group_info = dict(zip(names, size))# make a disctionary
+    
+    sorted_gi = sorted(group_info.items(), key=operator.itemgetter(1)) # use operator module to store key alongside value
+    top_group = api.GetMembers({"group_urlname":  sorted_gi[-1][0]})#in ascending orders so grab 0 index-name from the last item in list
+    ppl.extend(top_group.__dict__["results"])##which member has most groups
 
-###test to make sure dict aligns:
-names[0]
-size[0]
-group_info['Saint-Louis-Singles-Outdoor-Adventure-Group']
+    print sorted_gi[-1][0]
 
-https://www.meetup.com/Saint-Louis-Singles-Outdoor-Adventure-Group # check
 
-##which group was most popular
-sorted_gi = sorted(group_info.items(), key=operator.itemgetter(1)) # use operator module to store key alongside value
+genPop()
 
-top_group = api.GetMembers({"group_urlname":  sorted_gi[-1][0]})#in ascending orders so grab 0 index-name from the last item in list
 
-##which member has most groups
-#**When grabbing member objects the max seems to be 200 members
-ppl = []
-for p in range(210):
-    ppl.extend(top_group.__dict__["results"][p])
-
-ppl = top_group.__dict__['results']
-
-len(ppl)
-members[0]
-
-def peeps(membList):
-    for i in membList:
+def getGroups(membList):#grab all the people grab all their groups
+    for i in ppl:
         ids.append(i['id'])
-        groups.append(api.GetGroups({"member_id" :  i['id']}).meta['total_count'])
+    timebreak=True
+    while timebreak:#Rate limits on getgroups so 
+	    for i in ids:##collect the number of groups each member has
+
+		    try:
+			    groups.append((i,api.GetGroups({'member_id':str(i)}).meta['total_count'] ))
+			    timebreak=False
+		    except: 
+			    time.sleep(8)
+			    continue
+		    if len(groups)==200: break
+    
+getGroups(ppl)
 
 
-mem_info = dict(zip(ids, groups))
+def popular(): 
+    actguys_groups = api.GetGroups({'member_id' :  max(groups,key=operator.itemgetter(1))[0]})# #get the most active member from the most popular group
+    for g in actguys_groups.results:
+	    pop_groups.append((g['name'], g['members']))
+    print max(pop_groups,key=operator.itemgetter(1))#Group with most members in most popular guy of most popular groups

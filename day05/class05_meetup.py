@@ -54,7 +54,7 @@ for p in ppl:
 		print p["id"]
 
 
-mygroups = api.GetGroups({"member_id" : "235714231"})
+mygroups = api.GetGroups({"member_id" : "155621022"})
 mygroups.meta
 mygroups.results
 
