@@ -1,10 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\day03",
+    "\\day07",
     "\\day08",
     "\\homeworks",
-    "\\homeworks\\hw3"
+    "\\homeworks\\hw3",
+    "\\homeworks\\hw4"
   ],
-  "SelectedNode": "\\day08\\class08_structure.py",
+  "SelectedNode": "\\day03\\class03_dl.py",
   "PreviewInSolutionExplorer": false
 }
