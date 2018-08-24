@@ -42,11 +42,9 @@ def grab(groupList):
             size.append(temp2)
        
 
-##Make a dictionary
+    ##Make a dictionary
 grab(stlgroups)
 grab(actguys_groups)
-
-
 def genPop():#Most popular group on a general level from search
     group_info = dict(zip(names, size))# make a disctionary
     
@@ -54,7 +52,7 @@ def genPop():#Most popular group on a general level from search
     top_group = api.GetMembers({"group_urlname":  sorted_gi[-1][0]})#in ascending orders so grab 0 index-name from the last item in list
     ppl.extend(top_group.__dict__["results"])##which member has most groups
 
-    print sorted_gi[-1][0]# return the most popular group
+    print sorted_gi[-1][0]
 
 
 genPop()
