@@ -30,10 +30,6 @@ client = meetup.api.Client("c263c01e0c15052545d6537316b")
 meetup = imp.load_source('C:\Python27.14', 'C:\Python27.14\KEYS\meetup_KEY.py')
 api = meetup.client
 
-##identify a group based on some search criteria
-#for p in range(800):
-#    stlgroups.append( api.GetFindGroups({"zip" : "63116"})[p])
-#len(stlgroups)
 
 stlgroups = api.GetFindGroups({"zip" : "63116"})
 
