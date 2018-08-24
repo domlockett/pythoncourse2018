@@ -27,3 +27,19 @@ def selectionSort(numbers):
 
 
 
+#Now we have to run a simulation that incorporates time
+
+def simulation(n,it):
+    bubb_sorted = []
+    t_SelectionSort = []
+    for i in range(it):
+        start_time = timeit.default_timer() #take a note of the start time
+        bubbleSort(random.sample(range(n),n))# we bubblesort using randomly generated values defined by funtion input n
+        mid_time = timeit.default_timer() # save the time bubblesort took to run
+        selectionSort(random.sample(range(n),n))  #Now rund selectsort with random values
+        end_time = timeit.default_timer()#store the time that select sort took
+        bubb_sorted.append(mid_time - start_time)#store the time bubblsort took
+        t_SelectionSort.append(end_time - mid_time)#store the time select sort took
+    return sum(bubb_sorted)/len(bubb_sorted), sum(t_SelectionSort)/len(t_SelectionSort) #return the average of each to complete assignment 
+
+
