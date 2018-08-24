@@ -115,30 +115,22 @@ for town in session.query(Town).order_by(Town.id):
 # TODO: 
 # 1. Display, by department, the cities having
 #    more than 50,000 inhabitants.
+
+for town in session.query(Town).filter(town.population > 50000).order_by(town.name):
+  print town.department, town.name, town.population
+
+
+
+for town in session.query(Town).filter(Town.population > 50000):
+  print town.department, town.department.region,town.name, town.population
+
+
 # 2. Display the total number of inhabitants
 #    per department
 
-
-
-
-
-
-# Copyright (c) 2014 Matt Dickenson
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+_population = []
+for department in session.query(Department):
+    pop = 0
+    for i in department.towns:
+        pop += i.population
+    _population.append(("%s has %d citizens" % (department.deptname.encode('utf-8') ,pop)))
