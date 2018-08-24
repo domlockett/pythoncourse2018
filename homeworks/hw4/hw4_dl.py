@@ -25,13 +25,13 @@ def selectionSort(numbers):
 		i+=1 #go to next value and look through the list from their
 	return numbers#this sort gets less complex every run
 
-
+selectionSort(rand)
 
 #Now we have to run a simulation that incorporates time
 
 def simulation(n,it):
     bubb_sorted = []
-    t_SelectionSort = []
+    sel_sorted = []
     for i in range(it):
         start_time = timeit.default_timer() #take a note of the start time
         bubbleSort(random.sample(range(n),n))# we bubblesort using randomly generated values defined by funtion input n
@@ -39,7 +39,35 @@ def simulation(n,it):
         selectionSort(random.sample(range(n),n))  #Now rund selectsort with random values
         end_time = timeit.default_timer()#store the time that select sort took
         bubb_sorted.append(mid_time - start_time)#store the time bubblsort took
-        t_SelectionSort.append(end_time - mid_time)#store the time select sort took
-    return sum(bubb_sorted)/len(bubb_sorted), sum(t_SelectionSort)/len(t_SelectionSort) #return the average of each to complete assignment 
+        sel_sorted.append(end_time - mid_time)#store the time select sort took
+    return sum(bubb_sorted)/len(bubb_sorted), sum(sel_sorted)/len(sel_sorted) #return the average of each to complete assignment 
 
 
+
+
+bubb_sorted = []
+sel_sorted = []
+
+
+# Plot these results
+
+
+for i in range(1,151):
+    all_times = simulation(i,10) 
+    bubb_sorted.append(all_times[0])
+    sel_sorted.append(all_times[1])
+
+
+
+def sortPlot(bub_X1,bub_Y1,sel_X1,sel_Y2):#make a function to display results
+    py.plot(bub_X1, bub_Y1, label = 'Bubble Sort')# plot results of bubblesort
+    py.plot(sel_X1, sel_Y2, label = 'Selection Sort')# and selection sort
+    py.xlabel('Size of Sample')#give the plot x title
+    py.ylabel('Average Time')#y title
+    py.title("Average time of different sort methods with increasing list size")
+    py.legend()#create legend based on inputted info
+
+
+
+sortPlot(range(1,151), bubb_sorted, range(1,151), sel_sorted)
+py.savefig('graph_sort.png')# save the graph for our viewing pleasure
