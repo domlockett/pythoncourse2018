@@ -7,15 +7,19 @@ class Node:
 
 class LinkedList:
     def __init__(self, value): #intialize our function
-		self.head = value
-		self.count = 1
+        self.head = value
+        self.count = 1
 
-    def length(self): 
-		return self.count #define length by adding a count to each function
+    def length(self): #I think this would be O(n) (n is number of nodes) because you've got to loop through all the elements.
+        return self.count #define length by adding a count to each function
 
 
     def addNode(self, new_value):
-        self.new_value = Node(new_value)
+        _node = self.head#Loop through the linked list to the last element.
+        while _node.next != None:
+            _node = _node.next
+            _node.next = new_value#Put the new_value on the last element.
+        self.count += 1 #out counter of nodes
 
 
     def addNodeAfter(self, new_value, after_node):
