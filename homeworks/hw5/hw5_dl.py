@@ -10,10 +10,9 @@ class LinkedList:
 		self.head = value
 		self.count = 1
 
-    def length(self):
-        _length = 0
-        for i in node:
-            _length += 1
+    def length(self): 
+		return self.count #define length by adding a count to each function
+
 
     def addNode(self, new_value):
         self.new_value = Node(new_value)
