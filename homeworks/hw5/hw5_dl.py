@@ -10,6 +10,9 @@ class LinkedList:
 		self.value = _value
 		self.next = _next
 
+    def __str__(self):
+		return str(self.value) # add a print statement
+
     def length(self):
         _length = 0
         for i in node:
