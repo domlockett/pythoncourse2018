@@ -6,12 +6,9 @@ class Node:
         return str(self.value)
 
 class LinkedList:
-    def __init__(self, _value=None, _next=None): #Initialize the function
-		self.value = _value
-		self.next = _next
-
-    def __str__(self):
-		return str(self.value) # add a print statement
+    def __init__(self, value): #intialize our function
+		self.head = value
+		self.count = 1
 
     def length(self):
         _length = 0
